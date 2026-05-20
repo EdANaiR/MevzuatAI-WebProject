@@ -1,0 +1,20 @@
+# Yerel gelistirme icin PostgreSQL (pgvector).
+# Backend: cd backend/MevzuatAI.WebAPI && dotnet run
+# Frontend: cd frontend && npm run dev
+# Production deploy: DEPLOYMENT.md
+
+services:
+  database:
+    image: pgvector/pgvector:pg16 # Dikkat: Normal postgres değil, vektör destekli sürüm!
+    container_name: mevzuatai_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=MevzuatDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

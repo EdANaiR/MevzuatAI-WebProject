@@ -1,0 +1,6 @@
+@MevzuatAI.WebAPI_HostAddress = http://localhost:5023
+
+GET {{MevzuatAI.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
