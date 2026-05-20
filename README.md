@@ -2,6 +2,8 @@
 
 Türkiye hukuku odaklı AI destekli analiz ve dilekçe oluşturma platformu.
 
+**Repo:** https://github.com/EdANaiR/MevzuatAI-WebProject
+
 ## Özellikler
 
 - Hukuki soru analizi (yapılandırılmış JSON: konu, adımlar, mevzuat)
