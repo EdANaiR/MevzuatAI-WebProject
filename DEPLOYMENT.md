@@ -4,6 +4,7 @@ Bu rehber, projeyi canlıya almak ve CV’de **Live Demo** linki koymak için mi
 
 ## Ön koşullar
 
+- [x] Yerel git repo hazir (`git init` yapildi — push senin hesabinla)
 - [ ] GitHub’da public/private repo
 - [ ] Groq API key ([console.groq.com](https://console.groq.com))
 - [ ] (Opsiyonel) OpenRouter key — backend Chat için
