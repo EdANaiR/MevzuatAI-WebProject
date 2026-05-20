@@ -13,7 +13,7 @@ MevzuatAI, kullanıcıların hukuki sorunlarını doğal dille anlatıp yapılan
 ## CV — Proje satırı (Türkçe)
 
 **MevzuatAI** — AI Destekli Hukuk Asistanı | .NET 8, Next.js, PostgreSQL, JWT, Groq  
-[Live Demo](https://YOUR-VERCEL-URL.vercel.app) · [GitHub](https://github.com/YOUR_USER/MevzuatAI)
+[Live Demo](https://YOUR-VERCEL-URL.vercel.app) · [GitHub](https://github.com/EdANaiR/MevzuatAI-WebProject)
 
 ---
 
@@ -45,7 +45,7 @@ MevzuatAI, kullanıcıların hukuki sorunlarını doğal dille anlatıp yapılan
 **MevzuatAI**  
 Hukuki soru analizi, mevzuat referansı ve dilekçe üretimi sunan full-stack uygulama. Backend: .NET 8, EF Core, JWT. Frontend: Next.js, AI API entegrasyonu.  
 🔗 Demo: https://YOUR-VERCEL-URL.vercel.app  
-💻 Kod: https://github.com/YOUR_USER/MevzuatAI
+💻 Kod: https://github.com/EdANaiR/MevzuatAI-WebProject
 
 ---
 

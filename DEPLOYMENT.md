@@ -20,7 +20,7 @@ git init
 git add .
 git commit -m "MevzuatAI: initial portfolio release"
 git branch -M main
-git remote add origin https://github.com/KULLANICI/MevzuatAI.git
+git remote add origin https://github.com/EdANaiR/MevzuatAI-WebProject.git
 git push -u origin main
 ```
 
@@ -102,7 +102,7 @@ README ve LinkedIn’de şunları ekle:
 
 - **Live Demo:** `https://....vercel.app`
 - **API (opsiyonel):** `https://....railway.app`
-- **GitHub:** `https://github.com/KULLANICI/MevzuatAI`
+- **GitHub:** `https://github.com/EdANaiR/MevzuatAI-WebProject`
 
 Metin önerileri: [PORTFOLIO.md](./PORTFOLIO.md)
 
