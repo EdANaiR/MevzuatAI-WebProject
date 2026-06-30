@@ -1,3 +1,14 @@
+<img width="1219" height="849" alt="Ekran görüntüsü 2026-03-14 122218" src="https://github.com/user-attachments/assets/48ec1239-66a5-441f-bdfb-060491c815d8" />
+
+<img width="1902" height="940" alt="Ekran görüntüsü 2026-05-20 205539" src="https://github.com/user-attachments/assets/eb0aa4ca-26e2-4a47-ab51-15c425251e0e" />
+
+<img width="1546" height="940" alt="Ekran görüntüsü 2026-05-20 224232" src="https://github.com/user-attachments/assets/c23f9f3b-fca1-49de-ac2e-a6a1dc60046d" />
+
+<img width="1810" height="944" alt="Ekran görüntüsü 2026-05-20 224246" src="https://github.com/user-attachments/assets/6d85d199-3169-4b02-bd26-cd3bca3ece54" />
+
+<img width="1149" height="861" alt="Ekran görüntüsü 2026-05-20 205713" src="https://github.com/user-attachments/assets/673a7054-cceb-4207-b2f3-26e70e6d8c6f" />
+
+
 # MevzuatAI
 
 Türkiye hukuku odaklı AI destekli analiz ve dilekçe oluşturma platformu.
@@ -64,7 +75,8 @@ npm install
 npm run dev
 ```
 
-Uygulama: `http://localhost:3000`
+Uygulama: `http://localhost:3000`![Uploading Ekran görüntüsü 2026-03-14 122218.png…]()
+
 
 ## Deploy
 
