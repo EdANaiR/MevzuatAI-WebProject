@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireAuth } from "@/lib/verify-auth";
 
 // Bilinen kanunların parametreleri — gerekirse genişletilebilir
 const KNOWN_LAWS: Record<
@@ -90,6 +91,9 @@ function stripHtml(html: string): string {
 }
 
 export async function GET(req: NextRequest) {
+  const auth = await requireAuth(req);
+  if (!auth.ok) return auth.response;
+
   const { searchParams } = req.nextUrl;
 
   // Kod ile arama: ?code=TBK&madde=315

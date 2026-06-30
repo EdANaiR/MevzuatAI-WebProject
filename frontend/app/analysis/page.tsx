@@ -21,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
 import { withAuth } from "@/lib/auth-context";
+import { getAuthHeaders } from "@/lib/client-auth";
 
 const steps = [
   {
@@ -213,7 +214,9 @@ const AnalysisResult = () => {
     }));
 
     try {
-      const res = await fetch(`/api/mevzuat${apiParams}`);
+      const res = await fetch(`/api/mevzuat${apiParams}`, {
+        headers: getAuthHeaders({ json: false }),
+      });
       const data = await res.json();
       setLiveContent((prev) => ({
         ...prev,

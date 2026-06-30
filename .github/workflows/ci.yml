@@ -34,3 +34,6 @@ jobs:
         env:
           GROQ_API_KEY: placeholder-for-ci-build
           NEXT_PUBLIC_API_URL: http://localhost:5023
+          JWT_SECRET: ci-build-jwt-secret-min-32-chars-long
+          JWT_ISSUER: MevzuatAI
+          JWT_AUDIENCE: MevzuatAIClient

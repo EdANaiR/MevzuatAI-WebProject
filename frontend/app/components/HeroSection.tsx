@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { getStoredToken } from "@/lib/client-auth";
 
 const suggestions = [
   {
@@ -30,8 +31,12 @@ export default function HeroSection() {
 
   const handleAnalyze = () => {
     if (!query.trim()) return;
-    console.log("Analiz başlatılıyor:", query);
-    router.push(`/islem?q=${encodeURIComponent(query)}`);
+    const target = `/islem?q=${encodeURIComponent(query)}`;
+    if (!getStoredToken()) {
+      router.push(`/login?redirect=${encodeURIComponent(target)}`);
+      return;
+    }
+    router.push(target);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

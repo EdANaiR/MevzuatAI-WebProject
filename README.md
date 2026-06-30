@@ -58,7 +58,8 @@ API: `http://localhost:5023` — Swagger: `/swagger`
 ```bash
 cd frontend
 cp .env.example .env.local
-# GROQ_API_KEY ve NEXT_PUBLIC_API_URL doldur
+# GROQ_API_KEY, NEXT_PUBLIC_API_URL ve JWT_SECRET doldur
+# JWT_SECRET, backend appsettings.Development.json icindeki Jwt:SecretKey ile ayni olmali
 npm install
 npm run dev
 ```

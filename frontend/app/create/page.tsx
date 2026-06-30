@@ -21,6 +21,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { getAuthHeaders } from "@/lib/client-auth";
 import { useAuth, withAuth } from "@/lib/auth-context";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5023";
@@ -137,7 +138,7 @@ function CreatePetitionPage() {
     try {
       const res = await fetch("/api/dilekce", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           soru,
           konu: analiz.konu,

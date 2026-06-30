@@ -2,8 +2,12 @@
 // Analiz sonucuna göre dilekçe metni oluşturur
 
 import { NextRequest, NextResponse } from "next/server";
+import { requireAuth } from "@/lib/verify-auth";
 
 export async function POST(req: NextRequest) {
+  const auth = await requireAuth(req);
+  if (!auth.ok) return auth.response;
+
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return NextResponse.json(

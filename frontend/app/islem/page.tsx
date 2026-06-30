@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   BrainCircuit,
 } from "lucide-react";
+import { getAuthHeaders, getStoredToken } from "@/lib/client-auth";
 
 const loadingSteps = [
   { text: "Hukuki sorun analiz ediliyor...", icon: BrainCircuit },
@@ -37,14 +38,29 @@ function LoadingContent() {
 
     // Gemini API'ye gönder
     const runAnaliz = async () => {
+      if (!getStoredToken()) {
+        clearInterval(interval);
+        router.push(
+          `/login?redirect=${encodeURIComponent(`/islem?q=${encodeURIComponent(query)}`)}`,
+        );
+        return;
+      }
+
       try {
         const res = await fetch("/api/analiz", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: getAuthHeaders(),
           body: JSON.stringify({ soru: query }),
         });
 
         const data = await res.json();
+
+        if (res.status === 401) {
+          router.push(
+            `/login?redirect=${encodeURIComponent(`/islem?q=${encodeURIComponent(query)}`)}`,
+          );
+          return;
+        }
 
         if (!res.ok || !data.success) {
           throw new Error(data.error || "Analiz başarısız");

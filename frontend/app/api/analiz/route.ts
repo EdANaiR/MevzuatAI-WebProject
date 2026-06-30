@@ -1,6 +1,7 @@
 // app/api/analiz/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
+import { requireAuth } from "@/lib/verify-auth";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const GROQ_MODEL = "llama-3.3-70b-versatile";
@@ -65,6 +66,9 @@ JSON FORMATI:
 SADECE JSON döndür. adimlar: 2-4 eleman. mevzuat: 2-3 eleman. renk: amber|blue|emerald|red`;
 
 export async function POST(req: NextRequest) {
+  const auth = await requireAuth(req);
+  if (!auth.ok) return auth.response;
+
   const apiKey = process.env.GROQ_API_KEY;
 
   if (!apiKey) {

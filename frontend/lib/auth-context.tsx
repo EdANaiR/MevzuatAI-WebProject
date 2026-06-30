@@ -18,7 +18,7 @@ type AuthUser = {
 
 type AuthContextType = {
   user: AuthUser | null;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, redirectTo?: string) => Promise<void>;
   register: (
     firstName: string,
     lastName: string,
@@ -49,7 +49,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (
+    email: string,
+    password: string,
+    redirectTo?: string,
+  ) => {
     const res = await fetch(`${API_BASE}/api/Auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -64,7 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const data: AuthUser = await res.json();
     localStorage.setItem("mevzuat_user", JSON.stringify(data));
     setUser(data);
-    router.push("/");
+    router.push(redirectTo || "/");
   };
 
   const register = async (
