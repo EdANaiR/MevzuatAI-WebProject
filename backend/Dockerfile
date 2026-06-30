@@ -14,6 +14,7 @@ RUN dotnet publish MevzuatAI.WebAPI/MevzuatAI.WebAPI.csproj -c Release -o /app/p
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENV ASPNETCORE_URLS=http://+:8080
+# Render PORT env degiskenini kullanir (varsayilan 8080)
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "MevzuatAI.WebAPI.dll"]
+ENTRYPOINT ["sh", "-c", "export ASPNETCORE_URLS=http://0.0.0.0:${PORT:-8080} && exec dotnet MevzuatAI.WebAPI.dll"]

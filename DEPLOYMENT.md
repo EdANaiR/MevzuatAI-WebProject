@@ -64,7 +64,38 @@ Migration’lar backend ilk açılışta `Program.cs` içinde `Database.Migrate(
 4. Deploy sonrası URL al: örn. `https://mevzuatai-api.up.railway.app`
 5. Test: `GET /swagger` (Production’da Swagger kapalı; `POST /api/Auth/register` ile Postman test)
 
-**Render** için benzer: Web Service + Docker veya `dotnet publish` build command.
+**Render** için adimlar:
+
+1. [render.com](https://render.com) → **New** → **Web Service** → GitHub repo `MevzuatAI-WebProject`
+2. **Root Directory:** `backend`  ← **cok onemli**
+3. **Runtime:** Docker
+4. **Dockerfile Path:** `./Dockerfile` (root directory `backend` oldugu icin)
+5. **Instance type:** Free
+6. **Environment variables** (asagidaki tablo)
+7. **Deploy**
+
+> Hata `open Dockerfile: no such file or directory` → Root Directory bos birakilmis demektir.  
+> Dockerfile repo kokunde degil, `backend/Dockerfile` icindedir.
+
+Alternatif (repo kokunden):
+- Root Directory: *(bos)*
+- Dockerfile Path: `backend/Dockerfile`
+- Docker build context da `backend` olmali (Render panelinde "Docker Context" varsa)
+
+Veya repoda `render.yaml` var — **New > Blueprint** ile otomatik kurulur.
+
+| Değişken | Açıklama |
+|----------|----------|
+| `ConnectionStrings__DefaultConnection` | Render PostgreSQL veya Neon connection string |
+| `Jwt__SecretKey` | En az 32 karakter, rastgele |
+| `Jwt__Issuer` | `MevzuatAI` |
+| `Jwt__Audience` | `MevzuatAIClient` |
+| `Cors__AllowedOrigins` | `https://SENIN-VERCEL-URL.vercel.app` |
+| `Gemini__ApiKey` | OpenRouter key (opsiyonel) |
+| `ASPNETCORE_ENVIRONMENT` | `Production` |
+
+8. Deploy sonrasi URL: `https://mevzuatai-api.onrender.com` (ornek)
+9. Test: `GET https://SENIN-URL/api/Health` → `{"status":"healthy",...}`
 
 ---
 
@@ -78,7 +109,10 @@ Migration’lar backend ilk açılışta `Program.cs` içinde `Database.Migrate(
 | Değişken | Değer |
 |----------|--------|
 | `GROQ_API_KEY` | Groq secret |
-| `NEXT_PUBLIC_API_URL` | Backend URL (Railway), örn. `https://mevzuatai-api.up.railway.app` |
+| `NEXT_PUBLIC_API_URL` | Backend URL, örn. `https://mevzuatai-api.onrender.com` |
+| `JWT_SECRET` | Backend `Jwt__SecretKey` ile **aynı** değer |
+| `JWT_ISSUER` | `MevzuatAI` |
+| `JWT_AUDIENCE` | `MevzuatAIClient` |
 
 5. Deploy → `https://mevzuatai.vercel.app`
 

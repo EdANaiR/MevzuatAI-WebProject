@@ -1,0 +1,28 @@
+# Render Blueprint — backend Web Service
+# Dashboard: New > Blueprint > repo sec > render.yaml uygulanir
+# Veya manuel: Root Directory = backend, Dockerfile Path = ./Dockerfile
+
+services:
+  - type: web
+    name: mevzuatai-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/Health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Jwt__Issuer
+        value: MevzuatAI
+      - key: Jwt__Audience
+        value: MevzuatAIClient
+      # Asagidakileri Render panelinden secret olarak doldur:
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+      - key: Jwt__SecretKey
+        sync: false
+      - key: Cors__AllowedOrigins
+        sync: false
+      - key: Gemini__ApiKey
+        sync: false
